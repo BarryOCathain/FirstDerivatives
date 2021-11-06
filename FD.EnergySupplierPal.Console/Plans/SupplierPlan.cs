@@ -1,8 +1,10 @@
 ﻿namespace FD.EnergySupplierPal.Console.Plans
 {
-    using System.Collections.Generic;
     using Newtonsoft.Json;
 
+    /// <summary>
+    /// <inheritdoc cref="IPlan"/>
+    /// </summary>
     public class SupplierPlan : IPlan
     {
         [JsonProperty("supplier_name", Required = Required.Always)]

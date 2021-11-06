@@ -1,5 +1,8 @@
 ﻿namespace FD.EnergySupplierPal.Console
 {
+    /// <summary>
+    /// <inheritdoc cref="IPlanCost"/>
+    /// </summary>
     public class PlanCost : IPlanCost
     {
         public string SupplierName { get; set; }

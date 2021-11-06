@@ -7,6 +7,9 @@
     using Handlers;
     using Plans;
 
+    /// <summary>
+    /// <inheritdoc cref="IInputManager"/>
+    /// </summary>
     public class InputManager : IInputManager
     {
         private readonly IPlanHandler _planHandler;

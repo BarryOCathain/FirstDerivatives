@@ -5,6 +5,9 @@
     using System.Linq;
     using Plans;
 
+    /// <summary>
+    /// <inheritdoc cref="ICostHandler"/>
+    /// </summary>
     public class CostHandler : ICostHandler
     {
         private const int DaysInYear = 365;

@@ -6,9 +6,11 @@
     using Newtonsoft.Json;
     using Plans;
 
+    /// <summary>
+    /// <inheritdoc cref="IPlanHandler"/>
+    /// </summary>
     public class PlanHandler : IPlanHandler
     {
-
         public IEnumerable<IPlan> CreatePlans(string planFilePath)
         {
             if (string.IsNullOrWhiteSpace(planFilePath))
