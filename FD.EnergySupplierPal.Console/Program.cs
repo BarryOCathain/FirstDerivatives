@@ -19,40 +19,49 @@
 
             _inputManager = CreateInputManager(config);
 
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Please enter your commands:");
 
             var line = Console.ReadLine();
 
-            while (!string.IsNullOrWhiteSpace(line) && !line.Equals(ExitText, StringComparison.InvariantCultureIgnoreCase))
+            while (!line.Equals(ExitText, StringComparison.InvariantCultureIgnoreCase))
             {
                 var inputArgs = line.Split(' ');
 
-                var inputType = inputArgs[0].ToLower();
-
-                try
+                if (inputArgs.Length < 2)
+                    Console.WriteLine($"The command {line}, does not have valid arguments");
+                else
                 {
-                    switch (inputType)
+
+                    var inputType = inputArgs[0].ToLower();
+
+                    try
                     {
-                        case "input":
-                            _inputManager.InitializePlans(inputArgs[1]);
-                            break;
-                        case "annual_cost":
-                            if (!int.TryParse(inputArgs[1], out var consumption))
-                                Console.WriteLine("Annual Cost is not a valid number");
-                            else
-                            {
-                                var costs = _inputManager.CalculateCosts(consumption);
-                                costs = costs.OrderBy(c => c.Cost);
+                        switch (inputType)
+                        {
+                            case "input":
+                                _inputManager.InitializePlans(inputArgs[1]);
+                                break;
+                            case "annual_cost":
+                                if (!int.TryParse(inputArgs[1], out var consumption))
+                                    Console.WriteLine("Annual Cost is not a valid number");
+                                else
+                                {
+                                    var costs = _inputManager.CalculateCosts(consumption);
+                                    costs = costs.OrderBy(c => c.Cost);
 
-                                foreach (var planCost in costs)
-                                    Console.WriteLine(planCost.ToString());
-                            }
-                            break;
+                                    foreach (var planCost in costs)
+                                        Console.WriteLine(planCost.ToString());
+                                }
+                                break;
+                            default:
+                                Console.WriteLine($"The input: {line}, is not a valid command");
+                                break;
+                        }
                     }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
                 }
 
                 line = Console.ReadLine();
