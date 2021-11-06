@@ -1,0 +1,15 @@
+[
+    {
+        "supplier_name": "energyOne",
+        "plan_name": "planOne",
+        "prices": [
+            {
+                "rate": 13.5,
+                "threshold": 100
+            },
+            {
+                "rate": 10
+            }
+        ]
+    }
+]
